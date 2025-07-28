@@ -1,38 +1,1040 @@
-.App {
-  text-align: center;
+/* Genel Ayarlar ve Reset */
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif; /* Inter fontunu tercih ettim, Arial yedek */
+    background-color: #f5f5f5; /* Mevcut ana CSS'inizdeki arka plan */
+    overflow-y: auto; /* Sayfa kendiliğinden kaydırılabilir olsun */
+    min-height: 100vh; /* Tam ekran yüksekliği */
+    --header-height: 120px; /* Bu değeri kendi ölçümünüze göre ayarlayın */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 1. Ana Başlık (Header) - SABİT KALSIN */
+.main-header,
+.hero-header {
+    background-color: #4a77d2; /* Görseldeki mavi tonu */
+    color: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+    color: white;
+}
+
+.custom-title,
+.hero-title {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+.header-icon,
+.hero-icon {
+    font-size: 1em;
+    margin-right: 15px;
+}
+
+.custom-subtitle,
+.hero-slogan {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Google Translate Placeholder (Mevcut haliyle kalsın) */
+.google-translate-placeholder {
+    position: absolute;
+    top: 10px;
+    right: 180px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 6px 12px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #333;
+    font-size: 16px;
+    z-index: 1100;
+}
+.google-translate-placeholder #google_translate_element {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* HEADER BUTONLARI STYLES (En Sağ Üste Konumlandırıldı) */
+.header-buttons {
+    position: absolute;
+    top: 110px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 1100;
+}
+
+/* NAV BUTONLARI GENEL STİLİ (Giriş Yap ve Kayıt Ol için) */
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+/* "Giriş Yap" Butonu Stilleri */
+.nav-button.login {
+    background-color: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 10px rgba(119, 29, 29, 0.2);
+}
+
+.nav-button.login:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: white;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* "Kayıt Ol" Butonu Stilleri */
+.nav-button.signup {
+    background-color: #2f912f;
+    color: #ffffff;
+    border: 2px solid #3b5fff; /* Bu renk header'ın mavisine daha yakın */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 235, 59, 0.6);
+}
+
+.nav-button.signup:hover {
+    background-color: #201e13; /* Biraz daha koyu sarı */
+    border-color: #ffd700;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 215, 0, 0.8);
+    transform: translateY(-2px);
+}
+
+/* 2. ANA İÇERİK BÖLÜMÜ - Tüm içeriğin merkezi kapsayıcısı */
+.center-content-wrapper {
+    max-width: 2700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+    min-height: calc(100vh - var(--header-height, 120px) - 40px);
+    padding-top: 30px;
+}
+
+/* 3. SOL KENAR ÇUBUĞU VE SAĞ ANA İLAN ALANI - Yan yana sütunların kapsayıcısı */
+.main-layout-columns {
+    display: flex;
+    gap: 50px;
+    width: 100%;
+    align-items: flex-start;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+/* SOL KENAR ÇUBUĞU */
+.left-sidebar {
+    flex: 0 0 490px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    position: sticky;
+    top: calc(var(--header-height) + 20px);
+    z-index: 900;
+    align-self: flex-start;
+    background-color: #f5f5f5;
+    padding-bottom: 20px;
+    max-height: calc(100vh - var(--header-height) - 20px);
+    overflow-y: auto;
+}
+
+/* İş Arama Formu KUTUSU (.job-search-section) */
+.job-search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 35px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.search-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-icon {
+    font-size: 26px;
+    color: #007bff;
+}
+
+.section-title {
+    font-size: 26px;
+    color: #1d5ea0;
+    margin: 0;
+}
+
+.job-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.job-form input,
+.job-form select {
+    padding: 14px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.job-form input::placeholder {
+    font-size: 18px;
+    color: #999;
+}
+
+.job-form input:focus,
+.job-form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.job-form button {
+    padding: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.job-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Hızlı Filtreler KUTUSU */
+.quick-filters-box {
+    background-color: #fafafa;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
+    padding: 25px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.quick-filters-box h3 {
+    font-size: 29px;
+    margin-bottom: 15px;
+    color: #0056b3;
+}
+
+.filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filter-item:hover {
+    background-color: #f0f0f0;
+}
+
+.filter-item:last-child {
+    border-bottom: none;
+}
+
+.filter-item strong {
+    display: block;
+    font-size: 20px;
+    color: #222;
+    margin-bottom: 4px;
+}
+
+.tags {
+    font-size: 16px;
+    color: #666;
+}
+
+.highlight {
+    background-color: #e6f0ff;
+    border-left: 4px solid #007bff;
+    padding-left: 18px;
+}
+
+/* İSTATİSTİK KUTULARI */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background-color: #f7f9fc;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.stat-icon-value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    color: #4277c0;
+}
+
+.stat-icon-value svg {
+    font-size: 2.6rem;
+}
+
+.stat-value {
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* SAĞ ANA İLAN ALANI */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+/* İş İlanı Kartı */
+.job-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 0;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.job-card-link:hover .job-card {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.job-card {
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 35px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    width: 100%;
+    flex-shrink: 0;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.job-card-header h3 {
+    margin: 0 0 12px 0;
+    font-size: 2.6rem;
+    color: #2459ce;
+}
+
+.job-card-header span {
+    display: block;
+    font-size: 1.3rem;
+    color: #292828;
+    margin-bottom: 6px;
+}
+
+.tech-tags {
+    margin: 25px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tech-tags span {
+    background-color: #e6f0ff;
+    color: #007bff;
+    padding: 9px 16px;
+    border-radius: 20px;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.job-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.job-footer .apply-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.job-footer .apply-btn:hover {
+    background-color: #218838;
+}
+
+.job-footer .project-details-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+.job-footer .project-details-btn:hover {
+    background-color: #0056b3;
+}
+
+.job-footer .salary {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1.25rem;
+    background-color: #eaf7e6;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.job-footer .save-icon {
+    font-size: 2.2rem;
+    cursor: pointer;
+    color: #ff4d4d;
+    transition: color 0.2s ease;
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+.job-footer .save-icon:hover {
+    color: #e00000;
+}
+
+
+/* Responsive Ayarlamalar */
+@media (max-width: 1024px) {
+    .main-header,
+    .hero-header,
+    .left-sidebar {
+        position: static;
+        top: auto;
+        z-index: auto;
+        border-radius: 0;
+        padding-bottom: 0;
+        overflow-y: visible;
+    }
+    .header-buttons {
+        position: static;
+        margin: 15px auto 0;
+        width: fit-content;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .main-layout-columns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-sidebar {
+        width: 100%;
+        flex: none;
+        max-width: 600px;
+        max-height: none;
+    }
+
+    .main-content {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .job-card {
+        width: auto;
+    }
+
+    .main-header, .hero-header {
+        border-radius: 0;
+    }
+
+    .google-translate-placeholder {
+        position: static;
+        margin-top: 15px;
+        justify-content: center;
+        box-shadow: none;
+        background-color: transparent;
+        right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header, .hero-header {
+        padding: 1.5rem 1rem;
+    }
+    .left-sidebar {
+        position: static;
+        top: auto;
+        z-index: auto;
+        border-radius: 0;
+        padding-bottom: 0;
+        overflow-y: visible;
+        max-height: none;
+    }
+
+    .custom-title, .hero-title {
+        font-size: 2.4rem;
+    }
+
+    .header-icon, .hero-icon {
+        font-size: 0.9em;
+    }
+
+    .custom-subtitle, .hero-slogan {
+        font-size: 1.2rem;
+    }
+
+    .job-search-section,
+    .quick-filters-box,
+    .job-card {
+        padding: 18px;
+    }
+
+    .job-card-header h3 {
+        font-size: 2.2rem;
+    }
+
+    .job-card-header span {
+        font-size: 1.2rem;
+    }
+
+    .apply-btn, .project-details-btn {
+        padding: 12px 24px;
+        font-size: 1.1rem;
+    }
+
+    .save-icon {
+        font-size: 24px;
+    }
+
+    .nav-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+        min-width: 100px;
+    }
+    .header-buttons {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    .center-content-wrapper {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .job-form input,
+    .job-form select,
+    .job-form button {
+        font-size: 16px;
+    }
+
+    .tech-tags span {
+        font-size: 14px;
+        padding: 7px 12px;
+    }
+
+    .description {
+        font-size: 1.1rem;
+    }
+
+    .job-footer .apply-btn,
+    .job-footer .project-details-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .job-footer .salary {
+        font-size: 1.1rem;
+        padding: 6px 12px;
+    }
+
+    .job-footer .save-icon {
+        font-size: 2rem;
+    }
+}
+
+/* FOOTER KISMI */
+.footer {
+    background-color: #4277c0;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: auto;
+    border-top: 4px solid #4277c0;
+    font-size: 1.1rem;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.footer-content a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* Footer için Responsive Ayarlamalar */
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px 15px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 15px 10px;
+        font-size: .9rem;
+    }
+}
+
+/* Auth bileşeni için özel stiller (Ana CSS ile uyumlu hale getirildi) */
+
+/* Kimlik Doğrulama Sayfası Kapsayıcısı */
+.auth-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - var(--header-height, 120px) - 40px); /* Header ve footer'ı hesaba kat */
+    padding: 20px;
+    box-sizing: border-box;
+    /* Arka planı genel body arka planına bırakıyoruz */
+}
+
+/* Kimlik Doğrulama Form Kapsayıcısı */
+.auth-container {
+    background-color: #ffffff; /* Beyaz arka plan, diğer kutular gibi */
+    padding: 80px;
+    border-radius: 15px; /* Mevcut kutularla aynı yuvarlaklık */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Mevcut kutularla benzer gölge */
+    border: 1px solid #ccc; /* Mevcut kutularla aynı kenarlık */
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.auth-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Hover efekti */
+}
+
+/* Başlık */
+.auth-container h2 {
+    margin-bottom: 30px;
+    color: #1d5ea0; /* Genel site başlık renkleriyle uyumlu */
+    font-size: 3.5em; /* Daha büyük ve belirgin */
+    font-weight: 700;
+}
+
+/* Mesaj Kutuları (Hata/Başarı) - Mevcut App.css'inizde zaten var, tekrar eklenmiyor */
+/* .auth-message, .auth-message.error, .auth-message.success */
+/* Bu stiller zaten verdiğiniz CSS bloğunda mevcut, bu yüzden tekrar yazmaya gerek yok. */
+
+/* Form Stilleri */
+.auth-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 14px; /* Job form inputlarıyla aynı padding */
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Job form inputlarıyla aynı yuvarlaklık */
+    font-size: 18px; /* Job form inputlarıyla aynı font boyutu */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-form input[type="text"]:focus,
+.auth-form input[type="email"]:focus,
+.auth-form input[type="password"]:focus {
+    border-color: #007bff; /* Job form inputlarıyla aynı odak rengi */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Job form inputlarıyla aynı gölge */
+    outline: none;
+}
+
+.auth-form input:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Buton Stilleri */
+.auth-button {
+    width: 100%;
+    padding: 16px; /* Job form butonuyla aynı padding */
+    background-color: #007bff; /* Job form butonuyla aynı renk */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Job form butonuyla aynı yuvarlaklık */
+    font-size: 20px; /* Job form butonuyla aynı font boyutu */
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    margin-top: 20px;
+}
+
+.auth-button:hover {
+    background-color: #0056b3; /* Job form butonuyla aynı hover rengi */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.auth-button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    opacity: 0.8;
+}
+
+/* Link Stilleri */
+.auth-links {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.auth-links p {
+    margin-bottom: 10px;
+}
+
+.auth-links a {
+    color: #007bff; /* Genel site link renkleriyle uyumlu */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #0056b3; /* Genel site link hover renkleriyle uyumlu */
+    text-decoration: underline;
+}
+
+/* Duyarlı Tasarım (Responsive Design) - Auth bileşenine özel */
+@media (max-width: 600px) {
+    .auth-container {
+        padding: 30px 20px;
+        margin: 15px;
+    }
+
+    .auth-container h2 {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+
+    .auth-form input {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+
+    .auth-button {
+        padding: 14px;
+        font-size: 1em;
+    }
+
+    .auth-links {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 400px) {
+    .auth-container {
+        padding: 25px 15px;
+    }
+}
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tailwind CSS sınıfları zaten çoğu stil için kullanılıyor.
+   Burada sadece genel veya Tailwind'de olmayan özel stiller eklenebilir. */
+
+.auth-message {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem; /* sm */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth-message.error {
+    background-color: #fee2e2; /* red-100 */
+    color: #b91c1c; /* red-700 */
+    border: 1px solid #fca5a5; /* red-300 */
+}
+
+.auth-message.success {
+    background-color: #d1fae5; /* green-100 */
+    color: #065f46; /* green-700 */
+    border: 1px solid #a7f3d0; /* green-300 */
+}
+
+.auth-message button {
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: inherit; /* Mesaj rengini miras alır */
+}
+
+/* Form grupları için ek boşluk */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Input alanları için genel stil */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.5rem;
+    box-sizing: border-box; /* Padding'in genişliği etkilememesi için */
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #3b82f6; /* blue-500 */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* blue-500 with opacity */
+}
+
+/* Label'lar için stil */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600; /* semibold */
+    color: #374151; /* gray-700 */
+    font-size: 0.875rem; /* sm */
+}
+
+/* Butonlar için genel stil */
+.auth-button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: #2563eb; /* blue-600 */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.auth-button:hover {
+    background-color: #1d4ed8; /* blue-700 */
+}
+
+.auth-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* blue-500 with opacity */
+}
+
+/* Linkler için stil */
+.auth-links a {
+    color: #2563eb; /* blue-600 */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+    color: #1d4ed8; /* blue-700 */
+}
+
+/* Ortak form kapsayıcı stili */
+.login-form-container, .register-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+/* Ortak form kutu stili */
+.login-form, .register-form {
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 18px;
 }
 
-.App-link {
-  color: #61dafb;
+.login-form input, .register-form input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-form input:focus, .register-form input:focus {
+  border: 1.5px solid #6366f1;
+  outline: none;
+}
+
+.login-form button, .register-form button {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-form button:hover, .register-form button:hover {
+  background: #4f46e5;
+}
+
+.login-form div, .register-form div {
+  text-align: center;
+  color: #e11d48;
+  font-size: 0.98rem;
+  min-height: 22px;
 }

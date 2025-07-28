@@ -1,0 +1,292 @@
+/* src/ProjectDetail.css - Daha Estetik Bir Detay Sayfası Tasarımı */
+
+/* Genel Vücut ve Arka Plan Rengi */
+body {
+  background-color: #f0f2f5; /* Hafif, modern bir gri tonu */
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif; /* Daha modern bir font tercih edilebilir */
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Genel Kapsayıcı ve Sayfa Ortalama */
+.project-detail-container {
+  max-width: 1000px;
+  margin: 40px auto; /* Daha fazla dikey boşluk */
+  padding: 50px; /* Daha geniş iç boşluk */
+  background-color: #ffffff;
+  border-radius: 20px; /* Yumuşak yuvarlak köşeler */
+  /* Daha sofistike bir gölge */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Hafif hover efekti için */
+  overflow: hidden; /* Kenar taşmalarını engelle */
+}
+
+/* Sayfa hafifçe yukarı kalksın ve gölge belirginleşsin */
+.project-detail-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12), 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Geri Dön Linki */
+.back-link {
+  display: inline-flex; /* İkon eklenirse hizalama için */
+  align-items: center;
+  gap: 8px; /* İkon ile metin arası boşluk */
+  margin-bottom: 35px; /* Daha fazla boşluk */
+  color: #5a7dff; /* Canlı mavi */
+  text-decoration: none;
+  font-weight: 600; /* Hafif kalın */
+  font-size: 1.05em;
+  padding: 5px 10px; /* Kolay tıklama */
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  color: #3f5eec; /* Daha koyu canlı mavi */
+  background-color: #eef2ff; /* Hafif arka plan vurgusu */
+  transform: translateX(-8px); /* Hafif sola kayma efekti */
+}
+
+.back-link::before {
+  content: '←'; /* Geri oku ikonu */
+  font-size: 1.2em;
+}
+
+/* Ana Başlık (İş Pozisyonu Adı) */
+.project-detail-container h1 {
+  font-size: 3.4em; /* Daha da büyük */
+  color: #2c3e50; /* Koyu gri, modern bir ton */
+  margin-bottom: 30px;
+  text-align: center;
+  padding-bottom: 20px;
+  position: relative; /* Sahte çizgi için */
+  font-weight: 700; /* Daha kalın */
+  letter-spacing: -0.02em; /* Hafif harf aralığı sıkıştırması */
+}
+
+/* Altındaki estetik çizgi */
+.project-detail-container h1::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px; /* Kısa, odaklanmış çizgi */
+  height: 4px; /* Kalın çizgi */
+  background-color: #5a7dff; /* Canlı mavi */
+  border-radius: 2px;
+}
+
+/* Meta Bilgileri (Şirket, Konum, Maaş vb.) */
+.project-detail-container .job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Ortala */
+  gap: 30px; /* Daha fazla boşluk */
+  margin-bottom: 50px;
+  padding: 25px 30px;
+  background-color: #f7f9fc; /* Çok hafif bir gri */
+  border-radius: 15px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.03); /* Çok ince bir iç gölge */
+  font-size: 1.05em;
+  color: #555;
+  font-weight: 500;
+  border: 1px solid #e9eff6; /* Çok ince kenarlık */
+}
+
+.project-detail-container .job-meta span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  flex-shrink: 0; /* Küçülmesini engelle */
+}
+
+/* Meta etiketleri için vurgulu renk */
+.job-meta span strong {
+  color: #34495e; /* Koyu gri */
+  font-weight: 600;
+}
+
+/* Alt Başlıklar (İş Tanımı, Gereksinimler vb.) */
+.project-detail-container h2 {
+  font-size: 2.3em;
+  color: #34495e; /* Koyu gri */
+  margin-top: 50px; /* Daha fazla boşluk */
+  margin-bottom: 25px;
+  position: relative;
+  padding-left: 20px; /* Solundaki çizgiden sonra boşluk */
+  font-weight: 600;
+}
+
+/* Solundaki renkli, daha yumuşak çizgi */
+.project-detail-container h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px; /* Kalınlık */
+  height: 80%; /* Yüksekliği */
+  background-color: #5a7dff; /* Canlı mavi */
+  border-radius: 3px; /* Hafif yuvarlaklık */
+}
+
+/* Paragraf ve Liste Stilleri */
+.project-detail-container p {
+  font-size: 1.1em;
+  margin-bottom: 25px;
+  color: #666;
+  line-height: 1.8; /* Daha fazla satır aralığı */
+}
+
+.project-detail-container ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 0; /* Sol girintiyi kaldır */
+  margin-bottom: 30px;
+}
+
+.project-detail-container ul li {
+  position: relative;
+  padding-left: 30px; /* Madde işareti için daha fazla yer */
+  margin-bottom: 15px; /* Daha fazla boşluk */
+  font-size: 1.05em;
+  color: #555;
+}
+
+/* Özel madde işareti (daha estetik bir ikon) */
+.project-detail-container ul li::before {
+  content: '→'; /* Ok işareti veya başka bir sembol */
+  position: absolute;
+  left: 0;
+  color: #5a7dff; /* Mavi renk */
+  font-weight: bold;
+  font-size: 1.3em;
+  line-height: 1; /* Dikey hizalama için */
+  top: 5px; /* Hafif aşağı kaydır */
+}
+
+
+/* Teknoloji Etiketleri */
+.project-detail-container .tech-tags {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Daha fazla boşluk */
+}
+
+.project-detail-container .tech-tags span {
+  background-color: #eef2ff; /* Açık mavi arka plan */
+  color: #5a7dff; /* Canlı mavi yazı */
+  padding: 12px 22px; /* Daha fazla padding */
+  border-radius: 30px; /* Daha da yuvarlak */
+  font-size: 1em;
+  white-space: nowrap;
+  font-weight: 600;
+  border: 1px solid #d8e2ff; /* İnce, uyumlu kenarlık */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Hafif gölge */
+  transition: all 0.3s ease;
+  cursor: default; /* Kursor tipi */
+}
+
+.project-detail-container .tech-tags span:hover {
+  background-color: #5a7dff; /* Vurgulu mavi arka plan */
+  color: white;
+  transform: translateY(-3px) scale(1.02); /* Hafif yukarı kalkma ve büyüme */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Responsive Düzenlemeler */
+@media (max-width: 992px) {
+  .project-detail-container {
+    margin: 30px auto;
+    padding: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-detail-container {
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+  }
+  .project-detail-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+  .project-detail-container h1::after {
+    width: 60px;
+    height: 3px;
+  }
+  .project-detail-container h2 {
+    font-size: 1.8em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+  }
+  .project-detail-container h2::before {
+    width: 5px;
+    height: 70%;
+  }
+  .project-detail-container .job-meta {
+    flex-direction: column; /* Mobil görünümde alt alta sırala */
+    gap: 15px;
+    padding: 20px;
+  }
+  .project-detail-container .job-meta span {
+    width: 100%;
+    text-align: left;
+    display: flex; /* İçerik hizalama için */
+    justify-content: flex-start;
+  }
+  .project-detail-container p,
+  .project-detail-container ul li,
+  .back-link {
+    font-size: 1em;
+  }
+  .project-detail-container ul li::before {
+    top: 3px;
+  }
+  .project-detail-container .tech-tags span {
+    padding: 10px 18px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-detail-container {
+    margin: 15px; /* Kenarlara daha yakın */
+    padding: 20px;
+  }
+  .project-detail-container h1 {
+    font-size: 2em;
+  }
+  .project-detail-container h1::after {
+    width: 50px;
+    height: 3px;
+  }
+  .project-detail-container h2 {
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  .project-detail-container .job-meta {
+    padding: 15px;
+    gap: 10px;
+    font-size: 0.95em;
+  }
+  .project-detail-container p {
+    font-size: 0.9em;
+  }
+  .project-detail-container .tech-tags span {
+    padding: 8px 15px;
+  }
+}
