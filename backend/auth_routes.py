@@ -6,8 +6,8 @@ from models import User, db
 
 auth_bp = Blueprint("auth", __name__)
 
-@auth_bp.route('/auth/login', methods=['POST'])
-@cross_origin(origin="http://localhost:3000", supports_credentials=True)
+@auth_bp.route('/login', methods=['POST'])
+@cross_origin(origin="http://localhost:3001", supports_credentials=True)
 def login():
     data = request.json
     user = User.query.filter_by(email=data['email']).first()
@@ -17,8 +17,8 @@ def login():
     else:
         return jsonify({"message": "Geçersiz giriş"}), 401
 
-@auth_bp.route('/auth/login', methods=['POST'])
-@cross_origin(origin="http://localhost:3000", supports_credentials=True)
+@auth_bp.route('/register', methods=['POST'])
+@cross_origin(origin="http://localhost:3001", supports_credentials=True)
 def register():
     data = request.json
     if User.query.filter_by(email=data['email']).first():

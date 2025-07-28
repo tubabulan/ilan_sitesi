@@ -8,7 +8,7 @@ function LoginPage() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post('http://localhost:3000/auth/login', { email, password });
+      const res = await axios.post('http://localhost:3001/auth/login', { email, password });
       setMsg(res.data.message);
       // Giriş başarılıysa yönlendirme yapılabilir
     } catch (err) {
